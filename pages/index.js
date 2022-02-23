@@ -16,8 +16,11 @@ export default function Home() {
   }, []);
 
   async function loadNFTs(){
-    // const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/70cbedde3d94404f806260383c96cda1");
-    const provider = new ethers.providers.JsonRpcProvider();
+    // for testnet
+    const provider = new ethers.providers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com"); // from here (rpc) : https://docs.polygon.technology/docs/develop/network-details/network/
+    // const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.infura.io/v3/${projectId_from_infura}"); // more secure
+    // for localhost
+    //const provider = new ethers.providers.JsonRpcProvider();
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider);
 
